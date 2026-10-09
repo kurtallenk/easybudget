@@ -1,0 +1,138 @@
+/* ============================================================
+   Easy Budget Planner: authentication screens
+   ------------------------------------------------------------
+   Sign in, create account, verify email, forgot password and
+   reset password share this one sheet. It sits on top of
+   app.css and only consumes its tokens (--brand, --surface,
+   --border, --text, --muted, --pos/--neg/--warn ...), so the
+   auth pages follow the same palette as the app.
+   ============================================================ */
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:var(--font);
+  -webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:hidden}
+.auth-wrap{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;
+  padding:max(24px,env(safe-area-inset-top)) max(16px,env(safe-area-inset-right)) max(24px,env(safe-area-inset-bottom)) max(16px,env(safe-area-inset-left));
+  background:
+    radial-gradient(1200px 500px at 50% -10%,var(--brand-soft),transparent 70%),
+    var(--bg)}
+.auth-card{width:100%;max-width:420px;min-width:0;background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;padding:32px 28px 26px;box-shadow:0 12px 40px -18px rgba(16,24,40,.28),0 1px 2px rgba(16,24,40,.05)}
+.auth-brand{display:flex;flex-direction:column;align-items:center;gap:6px;margin:0 0 18px;text-decoration:none;color:inherit}
+.auth-brand img{width:128px;height:128px;object-fit:contain;display:block}
+.auth-brand .auth-wordmark{font-size:13px;font-weight:650;letter-spacing:.02em;color:var(--muted)}
+.auth-card h1{margin:0 0 6px;font-size:22px;line-height:1.25;letter-spacing:-.02em;text-align:center}
+.auth-sub{margin:0 0 22px;color:var(--muted);font-size:14px;line-height:1.5;text-align:center}
+
+/* fields */
+.auth-field{display:block;margin:0 0 15px;min-width:0}
+.auth-label{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px;font-size:13px;font-weight:600;color:var(--text)}
+.auth-label small{font-weight:500;color:var(--muted)}
+.auth-label a{font-weight:600;font-size:13px}
+.auth-input{width:100%;max-width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--border-strong);border-radius:10px;
+  font:inherit;font-size:16px;line-height:1.3;background:var(--surface);color:var(--text);
+  transition:border-color var(--dur),box-shadow var(--dur)}
+.auth-input::placeholder{color:color-mix(in srgb,var(--muted) 80%,transparent)}
+.auth-input:focus{outline:0;border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-ring)}
+.auth-input[aria-invalid="true"]{border-color:var(--neg);box-shadow:0 0 0 3px color-mix(in srgb,var(--neg) 18%,transparent)}
+.auth-pw{position:relative}
+.auth-pw .auth-input{padding-right:64px}
+.auth-pw-toggle{position:absolute;top:50%;right:6px;transform:translateY(-50%);min-height:32px;padding:4px 10px;border:0;border-radius:7px;
+  background:transparent;color:var(--accent-text);font:inherit;font-size:12.5px;font-weight:650;cursor:pointer}
+.auth-pw-toggle:hover{background:var(--brand-soft)}
+.auth-pw-toggle:focus-visible{outline:2px solid var(--brand);outline-offset:1px}
+.field-error{display:block;margin-top:6px;font-size:12.5px;font-style:normal;color:var(--neg-text);line-height:1.4}
+.field-error[hidden]{display:none}
+.auth-hint{display:block;margin-top:6px;font-size:12.5px;color:var(--muted);line-height:1.45}
+
+/* password requirements */
+.pw-rules{list-style:none;margin:8px 0 0;padding:10px 12px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);
+  display:grid;grid-template-columns:1fr 1fr;gap:6px 12px;font-size:12.5px;color:var(--muted)}
+.pw-rules li{display:flex;align-items:center;gap:7px;min-width:0;line-height:1.35}
+.pw-rules li::before{content:"";flex:0 0 14px;width:14px;height:14px;border-radius:50%;border:1.5px solid var(--border-strong);box-sizing:border-box}
+.pw-rules li.ok{color:var(--pos-text)}
+.pw-rules li.ok::before{border-color:var(--pos);background:var(--pos) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.5l2.5 2.5L12 5.5' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/12px no-repeat}
+.pw-rules .pw-rules-head{grid-column:1/-1;font-weight:600;color:var(--text-2)}
+.pw-rules .pw-rules-head::before{display:none}
+.pw-meter{height:4px;border-radius:99px;background:var(--surface-3);margin-top:8px;overflow:hidden}
+.pw-meter span{display:block;height:100%;width:0;border-radius:inherit;background:var(--neg);transition:width .2s var(--ease),background .2s}
+
+/* remember + row */
+.auth-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:2px 0 18px}
+.auth-check{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--text-2);cursor:pointer;user-select:none;min-height:32px}
+.auth-check input{width:17px;height:17px;margin:0;accent-color:var(--brand);cursor:pointer}
+
+/* buttons */
+.auth-card .btn{min-height:44px;font-size:14.5px;border-radius:10px}
+.auth-card .btn-block{width:100%}
+.auth-actions{display:grid;gap:10px;margin-top:6px}
+.btn-link{display:inline;padding:0;border:0;background:none;color:var(--accent-text);font:inherit;font-weight:600;cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.btn-link:disabled{color:var(--muted);cursor:not-allowed;text-decoration:none}
+.btn .spin{width:16px;height:16px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:authspin .7s linear infinite}
+@keyframes authspin{to{transform:rotate(360deg)}}
+.auth-card a{color:var(--accent-text)}
+
+/* alerts */
+.auth-alert{display:flex;gap:10px;align-items:flex-start;margin:0 0 16px;padding:11px 13px;border-radius:10px;font-size:13.5px;line-height:1.45;border:1px solid transparent;overflow-wrap:anywhere}
+.auth-alert[hidden]{display:none}
+.auth-alert::before{flex:0 0 18px;width:18px;height:18px;margin-top:1px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;color:#fff}
+.auth-alert.is-error{background:var(--neg-soft);border-color:color-mix(in srgb,var(--neg) 25%,transparent);color:var(--neg-text)}
+.auth-alert.is-error::before{content:"!";background:var(--neg)}
+.auth-alert.is-success{background:var(--pos-soft);border-color:color-mix(in srgb,var(--pos) 25%,transparent);color:var(--pos-text)}
+.auth-alert.is-success::before{content:"\2713";background:var(--pos)}
+.auth-alert.is-info{background:var(--info-soft);border-color:color-mix(in srgb,var(--info) 22%,transparent);color:var(--brand-700)}
+.auth-alert.is-info::before{content:"i";background:var(--info);font-style:italic;font-family:Georgia,serif}
+.auth-alert.is-warn{background:var(--warn-soft);border-color:color-mix(in srgb,var(--warn) 28%,transparent);color:var(--warn-text)}
+.auth-alert.is-warn::before{content:"!";background:var(--warn)}
+.auth-alert .auth-alert-body{min-width:0;flex:1}
+.auth-alert .auth-alert-body p{margin:0}
+.auth-alert .auth-alert-body .btn-link{margin-top:6px;display:inline-block}
+
+/* status panels (check inbox, verified, expired, reset done) */
+.auth-status{text-align:center}
+.auth-status-icon{width:64px;height:64px;margin:4px auto 16px;border-radius:50%;display:grid;place-items:center}
+.auth-status-icon svg{width:30px;height:30px}
+.auth-status-icon.is-success{background:var(--pos-soft);color:var(--pos)}
+.auth-status-icon.is-error{background:var(--neg-soft);color:var(--neg)}
+.auth-status-icon.is-warn{background:var(--warn-soft);color:var(--warn)}
+.auth-status-icon.is-info{background:var(--brand-soft);color:var(--brand)}
+.auth-status p{margin:0 0 14px;font-size:14px;line-height:1.55;color:var(--text-2)}
+.auth-status .auth-email{display:inline-block;max-width:100%;padding:2px 8px;border-radius:6px;background:var(--surface-3);color:var(--text);font-weight:600;overflow-wrap:anywhere}
+.auth-status .auth-small{font-size:13px;color:var(--muted)}
+.auth-status form{text-align:left;margin-top:8px}
+.auth-loading{display:flex;flex-direction:column;align-items:center;gap:14px;padding:16px 0;color:var(--muted);font-size:14px}
+.auth-loading .spin{width:28px;height:28px;border-radius:50%;border:3px solid var(--brand-soft);border-top-color:var(--brand);animation:authspin .8s linear infinite}
+
+.auth-foot{margin:20px 0 0;padding-top:16px;border-top:1px solid var(--border);font-size:13.5px;text-align:center;color:var(--muted)}
+.auth-divider{height:1px;background:var(--border);margin:18px 0}
+[hidden]{display:none !important}
+
+/* ---------- responsive ---------- */
+@media (max-width:480px){
+  .auth-wrap{align-items:flex-start;padding-top:max(16px,env(safe-area-inset-top))}
+  .auth-card{padding:24px 18px 20px;border-radius:14px}
+  .auth-brand img{width:96px;height:96px}
+  .auth-card h1{font-size:20px}
+  .pw-rules{grid-template-columns:1fr}
+}
+@media (max-width:340px){
+  .auth-card{padding:20px 14px 18px}
+  .auth-row{flex-direction:column;align-items:flex-start;gap:4px}
+}
+/* phones in landscape: short viewport, keep the form above the fold */
+@media (max-height:520px) and (orientation:landscape){
+  .auth-wrap{align-items:flex-start;padding-top:12px;padding-bottom:12px}
+  .auth-brand{flex-direction:row;justify-content:center;margin-bottom:10px}
+  .auth-brand img{width:44px;height:44px}
+  .auth-card{max-width:520px;padding:18px 22px}
+  .auth-sub{margin-bottom:14px}
+  .auth-status-icon{width:48px;height:48px;margin-bottom:10px}
+}
+@media (prefers-reduced-motion:reduce){
+  .btn .spin,.auth-loading .spin{animation-duration:2s}
+}
+
+/* Anchor buttons keep button colours (the generic link colour must not win). */
+.auth-card a.btn{text-decoration:none}
+.auth-card a.btn-primary,.auth-card a.btn-primary:hover{color:var(--on-brand)}
+.auth-card a.btn:not(.btn-primary){color:var(--text)}
+.auth-card h1[tabindex]:focus{outline:none}

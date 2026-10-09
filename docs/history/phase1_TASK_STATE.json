@@ -1,0 +1,26 @@
+{
+  "project": "Easy Budget Planner",
+  "updated": "2026-10-05",
+  "phase": 1,
+  "phase1": {
+    "status": "complete",
+    "features": ["email_verification", "resend_verification", "unverified_login_block", "forgot_password", "password_reset", "session_invalidation_on_password_change", "smtp_mailer", "responsive_auth_ui", "em_dash_removal"],
+    "migration": "database/migrations/009_email_verification_password_reset.sql",
+    "tests": {
+      "auth_runtime_tests.py": "124/124",
+      "auth_ui_tests.js": "178/178",
+      "runtime_tests.sh": "65/65",
+      "admin_runtime_tests.sh": "66/66 (1 pre-existing intermittent ordering check)",
+      "e2e-real-server.js": "47/47",
+      "grocery-tests/run.sh": "all passes 0 failed",
+      "php_lint": "clean",
+      "em_dash_search": "0 remaining"
+    },
+    "zip": "easybudgetplanner_phase1_complete.zip"
+  },
+  "known_issues": [
+    "admin_runtime_tests.sh 'newest first' intermittent when posts share a created_at second (pre-existing)",
+    "SMTP credentials must be configured by the owner in config/config.local.php"
+  ],
+  "next": "phase2_android"
+}

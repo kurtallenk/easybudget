@@ -1,0 +1,13 @@
+{
+  "_comment": "Website-wide announcements shown in Notifications. Add new entries at the top. Fields: id (unique, never reuse), type (feature | update | announcement | important), title, description (1-2 short sentences), created_at (ISO date/time), optional route (app page to open, e.g. \"settings\").",
+  "announcements": [
+    { "id": "2026-09-30-notifications", "type": "feature", "title": "Notifications inbox",
+      "description": "Website updates now appear here. Unread items are marked with a dot.", "created_at": "2026-09-30T09:00:00" },
+    { "id": "2026-09-29-setup-guide", "type": "feature", "title": "Interactive setup guide",
+      "description": "The setup guide now highlights the exact button to click on each page. Restart it any time from Settings.", "created_at": "2026-09-29T09:00:00", "route": "settings" },
+    { "id": "2026-09-28-tooltips", "type": "update", "title": "Explanations for your numbers",
+      "description": "Hover or tap a dashboard value to see what it means and where it comes from.", "created_at": "2026-09-28T09:00:00", "route": "dashboard" },
+    { "id": "2026-09-27-saved-budgets", "type": "update", "title": "Saved budgets moved into a dialog",
+      "description": "Use \u201cLoad Saved Budgets\u201d on the Budget page to open, preview and load your saved plans.", "created_at": "2026-09-27T09:00:00", "route": "budget" }
+  ]
+}

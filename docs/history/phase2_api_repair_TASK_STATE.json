@@ -1,0 +1,108 @@
+{
+  "project": "Easy Budget Planner",
+  "task": "Repair Phase 2 API integration without breaking the Phase 1 website",
+  "current_phase": "phase5_final_verification_complete",
+  "current_checkpoint": "easybudgetplanner_phase2_api_repair_final.zip",
+  "deploy_package": "easybudgetplanner_phase2_api_repair_DEPLOY.zip",
+  "completed_tasks": [
+    "phase0_baseline",
+    "phase1_root_cause_analysis",
+    "phase2_backend_repair",
+    "phase3_android_repair",
+    "phase4_full_testing",
+    "phase5_final_verification"
+  ],
+  "pending_tasks": [
+    "deploy_to_infinityfree",
+    "post_deploy_health_check",
+    "real_device_app_test"
+  ],
+  "root_causes": {
+    "RC1": "Phase 2 cross-file dependencies: partial/mixed upload -> fatal in session.php -> users look logged out, CSRF never issued",
+    "RC2": "migration 010 required: reset password 500 and app login 500 without it",
+    "RC3": "live runs Phase 1 api.php (+ leftover token.php): app login gets HTML, app register/reset get csrf_failed",
+    "RC4": "risk: custom headers may be stripped by host"
+  },
+  "files_modified": [
+    "website/includes/api.php",
+    "website/includes/ApiTokens.php (new)",
+    "website/includes/Auth.php",
+    "website/includes/AuthFlows.php",
+    "website/includes/Repositories.php",
+    "website/api/.htaccess",
+    "website/api/health.php (new)",
+    "website/api/bootstrap.php",
+    "website/api/auth/login.php",
+    "website/api/auth/register.php",
+    "website/api/auth/password.php",
+    "website/api/auth/session.php",
+    "website/api/auth/token.php (new)",
+    "website/api/auth/refresh.php (new)",
+    "website/api/auth/revoke.php (new)",
+    "website/database/migrations/010_api_tokens.sql (new)",
+    "website/database/schema.sql",
+    "website/database/schema_fixed.sql",
+    "website/docs/*",
+    "website/tools/mobile_api_tests.py (new)",
+    "website/tools/android_tests.sh (new)",
+    "website/tools/repair-tests/* (new)",
+    "android/app/src/main/java/app/freedev/easybudgetplanner/data/ApiClient.kt",
+    "android/app/build.gradle.kts (version 1.0.1)",
+    "android/app/src/test/java/app/freedev/easybudgetplanner/ApiClientTest.kt",
+    "android/app/src/test/java/app/freedev/easybudgetplanner/TestServer.kt",
+    "android/README.md",
+    "website/docs/ANDROID.md",
+    "website/tools/repair-tests/infinityfree_proxy.py (new)"
+  ],
+  "files_kept_identical_to_phase1": [
+    "website/includes/Request.php",
+    "website/includes/Session.php",
+    "website/config/config.php",
+    "website/config/config.local.php",
+    "website/index.html",
+    "website/assets/**",
+    "website/pages/**"
+  ],
+  "tests_passed": {
+    "repair_pre": "37/37",
+    "repair_post": "58/58",
+    "resilience": "10/10",
+    "runtime": "65/65",
+    "auth_runtime": "124/124",
+    "mobile_api": "117/117",
+    "admin_runtime": "65/66 (known flaky, pre-existing)",
+    "android_all": "43/43",
+    "android_live_and_ui_through_infinityfree_emulator": "14/14 (1 UI timing flake, passed on rerun)",
+    "ui_existing_session": "7/7",
+    "auth_ui": "178/178",
+    "grocery_e2e": "47/47",
+    "final_rerun": {
+      "repair_pre": "37/37",
+      "repair_post": "58/58",
+      "resilience": "10/10",
+      "runtime": "65/65",
+      "admin_runtime": "66/66",
+      "mobile_api": "117/117",
+      "auth_runtime": "124/124"
+    },
+    "migration_integrity": "29 existing tables checksum-identical after running 010 twice"
+  },
+  "tests_failed": [],
+  "known_issues": [
+    "Live host header behaviour unverified until deployment (use api/health.php)",
+    "InfinityFree rewrites HTTP 419 to 500 (body intact)",
+    "Phase 1 UA-fingerprint logout on browser update (pre-existing, unchanged)",
+    "config.local.php contains live DB password"
+  ],
+  "next_recommended_task": "deploy_to_infinityfree (website/docs/DEPLOY_PHASE2_REPAIR.md)",
+  "artifacts": {
+    "apk": "android/apk/EasyBudgetPlanner-1.0.1-debug.apk",
+    "deploy_zip": "easybudgetplanner_phase2_api_repair_DEPLOY.zip",
+    "final_zip": "easybudgetplanner_phase2_api_repair_final.zip"
+  },
+  "not_tested": [
+    "live InfinityFree host (emulated)",
+    "physical Android device (Robolectric instead)",
+    "real SMTP delivery (log driver used)"
+  ]
+}
