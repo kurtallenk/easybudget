@@ -1,0 +1,49 @@
+PASS register admin
+PASS register user
+PASS normal user has no Super Admin menu
+PASS normal user sees access denied on #/admin
+PASS normal user admin API → 403
+PASS admin sent message to all users
+PASS specific-user message delivered only to Maria
+PASS news persisted
+PASS user inbox shows admin items unread
+PASS inbox 390: no horizontal overflow
+PASS second device: same unread count after read on phone
+PASS second device: message shows as read
+PASS Mark all on device 2 → phone updates on focus (no reload)
+PASS phone after refresh: still all read
+PASS DB rows: all read for Maria
+PASS admin dashboard @390 modern: no horizontal overflow
+PASS admin dashboard @390: touch targets ≥44px
+PASS admin users @390 modern: no horizontal overflow
+PASS admin users @390: touch targets ≥44px
+PASS admin messages @390 modern: no horizontal overflow
+PASS admin messages @390: touch targets ≥44px
+PASS admin news @390 modern: no horizontal overflow
+PASS admin news @390: touch targets ≥44px
+PASS edit dialog fits @390
+PASS admin dashboard @320 futuristic: no horizontal overflow
+PASS admin dashboard @320: touch targets ≥44px
+PASS admin users @320 futuristic: no horizontal overflow
+PASS admin users @320: touch targets ≥44px
+PASS admin messages @320 futuristic: no horizontal overflow
+PASS admin messages @320: touch targets ≥44px
+PASS admin news @320 futuristic: no horizontal overflow
+PASS admin news @320: touch targets ≥44px
+PASS edit dialog fits @320
+PASS admin dashboard @390 futuristic: no horizontal overflow
+PASS admin dashboard @390: touch targets ≥44px
+PASS admin users @390 futuristic: no horizontal overflow
+PASS admin users @390: touch targets ≥44px
+PASS admin messages @390 futuristic: no horizontal overflow
+PASS admin messages @390: touch targets ≥44px
+PASS admin news @390 futuristic: no horizontal overflow
+PASS admin news @390: touch targets ≥44px
+PASS edit dialog fits @390
+PASS admin dashboard @834 classic: no horizontal overflow
+PASS admin users @834 classic: no horizontal overflow
+PASS admin messages @834 classic: no horizontal overflow
+PASS admin news @834 classic: no horizontal overflow
+PASS edit dialog fits @834
+
+47 passed, 0 failed

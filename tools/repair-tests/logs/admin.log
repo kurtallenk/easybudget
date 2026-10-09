@@ -1,0 +1,79 @@
+
+[1m1. Read/unread state lives in the database (cross-device)[0m
+  [32mPASS[0m list is 200
+  [32mPASS[0m inbox has 4 items (feed)
+  [32mPASS[0m all start unread
+  [32mPASS[0m mark one read is 200
+  [32mPASS[0m response shows it read
+  [32mPASS[0m row stored in notifications table
+  [32mPASS[0m second device sees the same read state
+  [32mPASS[0m second device unread count = N-1
+  [32mPASS[0m other user is unaffected (per-user state)
+  [32mPASS[0m marking again is idempotent (one row)
+  [32mPASS[0m unknown ids are ignored (no row created)
+  [32mPASS[0m invalid id is a 422
+  [32mPASS[0m empty list is a 422
+  [32mPASS[0m signed-out mark-read is rejected
+  [32mPASS[0m signed-out list is a 401
+  [32mPASS[0m Mark all as read is 200
+  [32mPASS[0m Mark all as read persisted (seen from device 1)
+  [32mPASS[0m state survives logout/login
+
+[1m2. Normal users cannot reach Super Admin APIs (server-side)[0m
+  [32mPASS[0m session flags normal user as not admin
+  [32mPASS[0m normal user GET /admin/overview.php is 403
+  [32mPASS[0m normal user GET /admin/users.php is 403
+  [32mPASS[0m normal user cannot send a message
+  [32mPASS[0m normal user cannot publish news
+  [32mPASS[0m nothing was written
+  [32mPASS[0m client-supplied role flags are ignored (403)
+  [32mPASS[0m signed-out admin API is a 401
+  [32mPASS[0m denials are audited
+
+[1m3. Super Admin (promoted by SQL only)[0m
+  [32mPASS[0m before promotion the admin-to-be is also 403
+  [32mPASS[0m session flags the Super Admin
+  [32mPASS[0m overview is 200
+  [32mPASS[0m user search is 200
+  [32mPASS[0m search finds exactly the user
+  [32mPASS[0m no password hash leaves the API
+  [32mPASS[0m empty title is a 422
+  [32mPASS[0m news-only type on a message is a 422
+  [32mPASS[0m selected with no users is a 422
+  [32mPASS[0m javascript: link is rejected
+  [32mPASS[0m message to all users is 201
+  [32mPASS[0m message to a specific user is 201
+  [32mPASS[0m recipient count 1
+  [32mPASS[0m news publish is 201
+  [32mPASS[0m news is always for all users
+  [32mPASS[0m posts persisted in admin_posts
+
+[1m4. Delivery to inboxes[0m
+  [32mPASS[0m user1 gets the all-users message (unread)
+  [32mPASS[0m user1 gets the selected message
+  [32mPASS[0m user1 gets the news with route
+  [32mPASS[0m user1 unread count = 3 new items
+  [32mPASS[0m newest first
+  [32mPASS[0m user2 does NOT get user1's message
+  [32mPASS[0m user2 gets the all-users message
+  [32mPASS[0m user2 cannot create a delivery for user1's message
+  [32mPASS[0m admin items read state syncs across devices
+  [32mPASS[0m admin sees read count
+
+[1m5. Manage (edit / delete) + authorization[0m
+  [32mPASS[0m normal user cannot edit
+  [32mPASS[0m normal user cannot delete
+  [32mPASS[0m admin edit is 200
+  [32mPASS[0m users see the edited title
+  [32mPASS[0m invalid type on edit is 422
+  [32mPASS[0m admin delete is 200
+  [32mPASS[0m delete removes deliveries
+  [32mPASS[0m deleted message gone from inbox
+  [32mPASS[0m delete twice is 404
+  [32mPASS[0m cross-origin admin write is rejected
+  [32mPASS[0m admin write without CSRF token is rejected
+  [32mPASS[0m demotion takes effect on the next request
+  [32mPASS[0m data reset keeps inbox read state
+
+[1mResult[0m
+  66 passed, 0 failed

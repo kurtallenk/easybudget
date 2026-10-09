@@ -1,0 +1,8 @@
+  PASS signed in on Phase 1 site (URL http://127.0.0.1:8085/index.html)
+  PASS Phase 1 session authenticated
+  PASS after deploy: still on the app, not redirected to login (URL http://127.0.0.1:8086/index.html)
+  PASS after deploy: session authenticated
+  PASS after deploy: bootstrap 200
+  PASS after logout: index redirects to login
+  PASS login again through the UI on repaired code
+RESULT PASS 7 FAIL 0

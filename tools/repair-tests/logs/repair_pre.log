@@ -1,0 +1,44 @@
+=== MODE pre: health
+  PASS health JSON envelope
+  PASS health checks code modules
+  PASS health apiTokensTable=False
+  PASS health detects app client
+=== Existing website user logged in on Phase 1, then repaired code deployed
+  PASS existing session still authenticated on repaired code
+  PASS session cookie unchanged (no forced re-login)
+  PASS existing user bootstrap 200
+  PASS existing user write with CSRF
+  PASS website write without CSRF still rejected (419)
+  PASS cross-site style write w/o session rejected
+=== Website flows on repaired code
+  PASS web register 201
+  PASS web verify email
+  PASS web invalid credentials 401
+  PASS web login
+  PASS web session persists
+  PASS web change password
+  PASS web session kept after own password change
+  PASS web logout
+  PASS web signed out after logout
+  PASS web login again
+  PASS web forgot-password
+  PASS reset email sent
+  PASS web reset-check valid
+  PASS web reset-password (works pre-migration)
+  PASS other web sessions signed out after reset (by design)
+  PASS web login with new password
+=== Android app flows
+  PASS app register 201 JSON (no CSRF)
+  PASS app forgot-password 200 JSON
+  PASS app resend-verification JSON
+  PASS app invalid credentials -> 401 JSON
+  PASS app login before migration -> clear 503 JSON (not 500/HTML)
+  PASS app session probe w/o token JSON
+=== Every API response is JSON (sample of error paths)
+  PASS JSON envelope: GET api/auth/token.php -> 405
+  PASS JSON envelope: POST api/auth/token.php -> 400
+  PASS JSON envelope: POST api/auth/register.php -> 422
+  PASS JSON envelope: GET api/accounts/list.php -> 401
+  PASS JSON envelope: POST api/transactions/create.php -> 401
+
+RESULT pre: PASS 37 FAIL 0

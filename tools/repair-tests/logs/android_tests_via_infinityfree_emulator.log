@@ -1,0 +1,88 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+> Task :app:bundleDebugClassesToRuntimeJar UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:compileDebugUnitTestKotlin UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:packageDebugUnitTestForUnitTest UP-TO-DATE
+> Task :app:generateDebugUnitTestConfig UP-TO-DATE
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :app:processDebugUnitTestJavaRes UP-TO-DATE
+
+> Task :app:testDebugUnitTest
+
+LiveApiTest > fullFeatureRoundTrip PASSED
+
+LiveApiTest > usersCannotTouchEachOther PASSED
+
+LiveApiTest > refreshAndLogoutAgainstRealServer PASSED
+
+LiveApiTest > authErrorsAreReadable PASSED
+
+UiFlowTest > unverifiedLoginOffersResend PASSED
+
+UiFlowTest > addExpenseFromDashboardWithDuplicateGuard PASSED
+
+UiFlowTest > signInShowsDashboardAndTabsNavigateWithBack PASSED
+
+UiFlowTest > budgetLineSaveLoadPreviewClear PASSED
+
+UiFlowTest > billMarkPaidRecordsExpense PASSED
+
+UiFlowTest > unreachableServerShowsRetry PASSED
+
+UiFlowTest > offlineBarAndRevokedSessionReturnToLogin PASSED
+
+UiFlowTest > registerValidatesThenShowsCheckEmail PASSED
+
+UiFlowTest > liveGroceryListPriceSubmitSaveLoadClear FAILED
+    androidx.compose.ui.test.ComposeTimeoutException: Condition still not satisfied after 20000 ms
+        at androidx.compose.ui.test.AndroidComposeUiTestEnvironment$AndroidComposeUiTestImpl.waitUntil(ComposeUiTest.android.kt:441)
+        at androidx.compose.ui.test.junit4.AndroidComposeTestRule.waitUntil(AndroidComposeTestRule.android.kt:306)
+        at app.freedev.easybudgetplanner.UiTestSupportKt.waitTag(UiTestSupport.kt:34)
+        at app.freedev.easybudgetplanner.UiTestSupportKt.waitTag$default(UiTestSupport.kt:34)
+        at app.freedev.easybudgetplanner.UiFlowTest.liveGroceryListPriceSubmitSaveLoadClear(UiFlowTest.kt:134)
+
+UiFlowTest > editorAsksBeforeDiscardingChanges PASSED
+
+14 tests completed, 1 failed
+
+> Task :app:testDebugUnitTest FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:testDebugUnitTest'.
+> There were failing tests. See the report at: file:///vercel/sandbox/data/ebp/build/android/app/build/reports/tests/testDebugUnitTest/index.html
+
+* Try:
+> Run with --scan to get full insights.
+
+BUILD FAILED in 1m 32s
+28 actionable tasks: 1 executed, 27 up-to-date

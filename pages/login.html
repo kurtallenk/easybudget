@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="same-origin">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f3f5f8">
+<title>Sign in · Easy Budget Planner</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+<link rel="stylesheet" href="../assets/css/auth.css">
+<script src="../assets/js/auth.js" defer></script>
+</head>
+<body data-page="login">
+<div class="auth-wrap">
+  <main class="auth-card">
+    <a class="auth-brand" href="login.html" aria-label="Easy Budget Planner, sign in">
+      <img src="../assets/images/budgetPlanner.avif" alt="" width="128" height="128">
+    </a>
+    <h1>Welcome back</h1>
+    <p class="auth-sub">Sign in to your Easy Budget Planner workspace.</p>
+
+    <div class="auth-alert" id="alert" hidden></div>
+
+    <form id="form" novalidate>
+      <div class="auth-field">
+        <label class="auth-label" for="email"><span>Email</span></label>
+        <input class="auth-input" id="email" type="email" name="email" autocomplete="email" inputmode="email" required maxlength="190" placeholder="you@example.com" aria-describedby="email-err" autofocus>
+        <em class="field-error" id="email-err" data-for="email" hidden></em>
+      </div>
+      <div class="auth-field">
+        <div class="auth-label"><label for="password">Password</label><a href="forgot-password.html" id="forgot-link">Forgot password?</a></div>
+        <div class="auth-pw">
+          <input class="auth-input" id="password" type="password" name="password" autocomplete="current-password" required maxlength="200" aria-describedby="password-err">
+          <button class="auth-pw-toggle" type="button" aria-label="Show password" aria-pressed="false">Show</button>
+        </div>
+        <em class="field-error" id="password-err" data-for="password" hidden></em>
+      </div>
+      <div class="auth-row">
+        <label class="auth-check"><input type="checkbox" name="remember" id="remember"><span>Keep me logged in</span></label>
+      </div>
+      <button class="btn btn-primary btn-block" type="submit" id="submit">Sign in</button>
+    </form>
+
+    <p class="auth-foot">New to Easy Budget Planner? <a href="register.html">Create an account</a></p>
+  </main>
+</div>
+</body>
+</html>

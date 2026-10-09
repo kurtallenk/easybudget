@@ -1,0 +1,180 @@
+PASS register: invalid email shows a field error
+PASS register: weak password shows a field error
+PASS register: rules list shows length met but kinds not
+PASS register: mismatch shows a field error
+PASS register: all requirement rules satisfied for a good password
+PASS register: show password toggle reveals text
+PASS register: "check your inbox" screen shown
+PASS register: shows the address the link went to
+PASS register: resend is on a cooldown right after sending
+PASS login: unverified account gets a clear verification message
+PASS login: unverified message offers a resend button
+PASS login: resend confirms another email was sent
+PASS login: resend produced a new token
+PASS verify: replaced (old) link is reported as not valid
+PASS verify: invalid link offers a resend form
+PASS verify: success message
+PASS verify: token removed from the address bar
+PASS verify -> login shows "email confirmed" notice
+PASS verify: reused link says already confirmed
+PASS verify: invalid token message
+PASS verify: missing token handled gracefully
+PASS verify: expired link message
+PASS verify: resend from expired page confirms
+PASS login: "Forgot password?" link is visible
+PASS login: incorrect password message
+PASS login: unknown email gets the same message
+PASS login: invalid email format caught
+PASS login: verified user enters the application
+PASS login page redirects a signed-in user to the app
+PASS logout: returns to the sign-in page
+PASS protected app redirects to sign-in after logout
+PASS forgot: page opens from the login link
+PASS forgot: invalid email format caught
+PASS forgot: unknown email gets the generic "check your email" screen
+PASS forgot: known email gets the identical screen
+PASS forgot: reset email delivered with a link
+PASS reset: form shown for a valid link
+PASS reset: token removed from the address bar
+PASS reset: password requirements visible
+PASS reset: mismatch caught
+PASS reset: weak password caught
+PASS reset: server refuses the current password
+PASS reset: success screen
+PASS reset -> login shows the "password changed" notice
+PASS reset: old password rejected
+PASS reset: login with the new password enters the app
+PASS reset: reused link shows "already used"
+PASS reset: invalid link message
+PASS reset: expired link message
+PASS no JavaScript errors on the auth pages
+PASS desktop 1440x900 login: no horizontal overflow
+PASS desktop 1440x900 login: buttons are comfortably tappable
+PASS desktop 1440x900 login-error: no horizontal overflow
+PASS desktop 1440x900 login-error: buttons are comfortably tappable
+PASS desktop 1440x900 register: no horizontal overflow
+PASS desktop 1440x900 register: buttons are comfortably tappable
+PASS desktop 1440x900 register-sent: no horizontal overflow
+PASS desktop 1440x900 register-sent: buttons are comfortably tappable
+PASS desktop 1440x900 verify-invalid: no horizontal overflow
+PASS desktop 1440x900 verify-invalid: buttons are comfortably tappable
+PASS desktop 1440x900 forgot: no horizontal overflow
+PASS desktop 1440x900 forgot: buttons are comfortably tappable
+PASS desktop 1440x900 reset-form: no horizontal overflow
+PASS desktop 1440x900 reset-form: buttons are comfortably tappable
+PASS desktop 1440x900 reset-invalid: no horizontal overflow
+PASS desktop 1440x900 reset-invalid: buttons are comfortably tappable
+PASS laptop 1280x720 login: no horizontal overflow
+PASS laptop 1280x720 login: buttons are comfortably tappable
+PASS laptop 1280x720 login-error: no horizontal overflow
+PASS laptop 1280x720 login-error: buttons are comfortably tappable
+PASS laptop 1280x720 register: no horizontal overflow
+PASS laptop 1280x720 register: buttons are comfortably tappable
+PASS laptop 1280x720 register-sent: no horizontal overflow
+PASS laptop 1280x720 register-sent: buttons are comfortably tappable
+PASS laptop 1280x720 verify-invalid: no horizontal overflow
+PASS laptop 1280x720 verify-invalid: buttons are comfortably tappable
+PASS laptop 1280x720 forgot: no horizontal overflow
+PASS laptop 1280x720 forgot: buttons are comfortably tappable
+PASS laptop 1280x720 reset-form: no horizontal overflow
+PASS laptop 1280x720 reset-form: buttons are comfortably tappable
+PASS laptop 1280x720 reset-invalid: no horizontal overflow
+PASS laptop 1280x720 reset-invalid: buttons are comfortably tappable
+PASS tablet 834x1112 login: no horizontal overflow
+PASS tablet 834x1112 login: buttons are comfortably tappable
+PASS tablet 834x1112 login-error: no horizontal overflow
+PASS tablet 834x1112 login-error: buttons are comfortably tappable
+PASS tablet 834x1112 register: no horizontal overflow
+PASS tablet 834x1112 register: buttons are comfortably tappable
+PASS tablet 834x1112 register-sent: no horizontal overflow
+PASS tablet 834x1112 register-sent: buttons are comfortably tappable
+PASS tablet 834x1112 verify-invalid: no horizontal overflow
+PASS tablet 834x1112 verify-invalid: buttons are comfortably tappable
+PASS tablet 834x1112 forgot: no horizontal overflow
+PASS tablet 834x1112 forgot: buttons are comfortably tappable
+PASS tablet 834x1112 reset-form: no horizontal overflow
+PASS tablet 834x1112 reset-form: buttons are comfortably tappable
+PASS tablet 834x1112 reset-invalid: no horizontal overflow
+PASS tablet 834x1112 reset-invalid: buttons are comfortably tappable
+PASS tablet-landscape 1112x834 login: no horizontal overflow
+PASS tablet-landscape 1112x834 login: buttons are comfortably tappable
+PASS tablet-landscape 1112x834 login-error: no horizontal overflow
+PASS tablet-landscape 1112x834 login-error: buttons are comfortably tappable
+PASS tablet-landscape 1112x834 register: no horizontal overflow
+PASS tablet-landscape 1112x834 register: buttons are comfortably tappable
+PASS tablet-landscape 1112x834 register-sent: no horizontal overflow
+PASS tablet-landscape 1112x834 register-sent: buttons are comfortably tappable
+PASS tablet-landscape 1112x834 verify-invalid: no horizontal overflow
+PASS tablet-landscape 1112x834 verify-invalid: buttons are comfortably tappable
+PASS tablet-landscape 1112x834 forgot: no horizontal overflow
+PASS tablet-landscape 1112x834 forgot: buttons are comfortably tappable
+PASS tablet-landscape 1112x834 reset-form: no horizontal overflow
+PASS tablet-landscape 1112x834 reset-form: buttons are comfortably tappable
+PASS tablet-landscape 1112x834 reset-invalid: no horizontal overflow
+PASS tablet-landscape 1112x834 reset-invalid: buttons are comfortably tappable
+PASS mobile 390x844 login: no horizontal overflow
+PASS mobile 390x844 login: buttons are comfortably tappable
+PASS mobile 390x844 login-error: no horizontal overflow
+PASS mobile 390x844 login-error: buttons are comfortably tappable
+PASS mobile 390x844 register: no horizontal overflow
+PASS mobile 390x844 register: buttons are comfortably tappable
+PASS mobile 390x844 register-sent: no horizontal overflow
+PASS mobile 390x844 register-sent: buttons are comfortably tappable
+PASS mobile 390x844 verify-invalid: no horizontal overflow
+PASS mobile 390x844 verify-invalid: buttons are comfortably tappable
+PASS mobile 390x844 forgot: no horizontal overflow
+PASS mobile 390x844 forgot: buttons are comfortably tappable
+PASS mobile 390x844 reset-form: no horizontal overflow
+PASS mobile 390x844 reset-form: buttons are comfortably tappable
+PASS mobile 390x844 reset-invalid: no horizontal overflow
+PASS mobile 390x844 reset-invalid: buttons are comfortably tappable
+PASS small-mobile 320x568 login: no horizontal overflow
+PASS small-mobile 320x568 login: buttons are comfortably tappable
+PASS small-mobile 320x568 login-error: no horizontal overflow
+PASS small-mobile 320x568 login-error: buttons are comfortably tappable
+PASS small-mobile 320x568 register: no horizontal overflow
+PASS small-mobile 320x568 register: buttons are comfortably tappable
+PASS small-mobile 320x568 register-sent: no horizontal overflow
+PASS small-mobile 320x568 register-sent: buttons are comfortably tappable
+PASS small-mobile 320x568 verify-invalid: no horizontal overflow
+PASS small-mobile 320x568 verify-invalid: buttons are comfortably tappable
+PASS small-mobile 320x568 forgot: no horizontal overflow
+PASS small-mobile 320x568 forgot: buttons are comfortably tappable
+PASS small-mobile 320x568 reset-form: no horizontal overflow
+PASS small-mobile 320x568 reset-form: buttons are comfortably tappable
+PASS small-mobile 320x568 reset-invalid: no horizontal overflow
+PASS small-mobile 320x568 reset-invalid: buttons are comfortably tappable
+PASS mobile-landscape 844x390 login: no horizontal overflow
+PASS mobile-landscape 844x390 login: buttons are comfortably tappable
+PASS mobile-landscape 844x390 login-error: no horizontal overflow
+PASS mobile-landscape 844x390 login-error: buttons are comfortably tappable
+PASS mobile-landscape 844x390 register: no horizontal overflow
+PASS mobile-landscape 844x390 register: buttons are comfortably tappable
+PASS mobile-landscape 844x390 register-sent: no horizontal overflow
+PASS mobile-landscape 844x390 register-sent: buttons are comfortably tappable
+PASS mobile-landscape 844x390 verify-invalid: no horizontal overflow
+PASS mobile-landscape 844x390 verify-invalid: buttons are comfortably tappable
+PASS mobile-landscape 844x390 forgot: no horizontal overflow
+PASS mobile-landscape 844x390 forgot: buttons are comfortably tappable
+PASS mobile-landscape 844x390 reset-form: no horizontal overflow
+PASS mobile-landscape 844x390 reset-form: buttons are comfortably tappable
+PASS mobile-landscape 844x390 reset-invalid: no horizontal overflow
+PASS mobile-landscape 844x390 reset-invalid: buttons are comfortably tappable
+PASS small-landscape 568x320 login: no horizontal overflow
+PASS small-landscape 568x320 login: buttons are comfortably tappable
+PASS small-landscape 568x320 login-error: no horizontal overflow
+PASS small-landscape 568x320 login-error: buttons are comfortably tappable
+PASS small-landscape 568x320 register: no horizontal overflow
+PASS small-landscape 568x320 register: buttons are comfortably tappable
+PASS small-landscape 568x320 register-sent: no horizontal overflow
+PASS small-landscape 568x320 register-sent: buttons are comfortably tappable
+PASS small-landscape 568x320 verify-invalid: no horizontal overflow
+PASS small-landscape 568x320 verify-invalid: buttons are comfortably tappable
+PASS small-landscape 568x320 forgot: no horizontal overflow
+PASS small-landscape 568x320 forgot: buttons are comfortably tappable
+PASS small-landscape 568x320 reset-form: no horizontal overflow
+PASS small-landscape 568x320 reset-form: buttons are comfortably tappable
+PASS small-landscape 568x320 reset-invalid: no horizontal overflow
+PASS small-landscape 568x320 reset-invalid: buttons are comfortably tappable
+
+178 passed, 0 failed

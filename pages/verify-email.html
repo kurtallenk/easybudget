@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f3f5f8">
+<title>Confirm email · Easy Budget Planner</title>
+<link rel="stylesheet" href="../assets/css/app.css">
+<link rel="stylesheet" href="../assets/css/auth.css">
+<script src="../assets/js/auth.js" defer></script>
+</head>
+<body data-page="verify">
+<div class="auth-wrap">
+  <main class="auth-card">
+    <a class="auth-brand" href="login.html" aria-label="Easy Budget Planner, sign in">
+      <img src="../assets/images/budgetPlanner.avif" alt="" width="128" height="128">
+    </a>
+    <section data-view="loading">
+      <h1 class="sr-only" style="position:absolute;left:-9999px">Confirming your email</h1>
+      <div class="auth-loading" role="status"><span class="spin" aria-hidden="true"></span><span>Confirming your email address...</span></div>
+    </section>
+
+    <section data-view="result" hidden>
+      <div class="auth-status">
+        <div class="auth-status-icon is-info" id="status-icon"></div>
+        <h1 id="status-title"></h1>
+        <p id="status-text"></p>
+        <div class="auth-actions"><a class="btn btn-primary btn-block" id="status-primary" href="login.html" hidden>Sign in</a></div>
+        <form id="resend-form" novalidate hidden>
+          <div class="auth-divider"></div>
+          <div class="auth-alert" id="resend-alert" hidden></div>
+          <div class="auth-field">
+            <label class="auth-label" for="resend-email"><span>Email</span></label>
+            <input class="auth-input" id="resend-email" type="email" name="email" autocomplete="email" inputmode="email" required maxlength="190" placeholder="you@example.com" aria-describedby="resend-email-err">
+            <em class="field-error" id="resend-email-err" data-for="email" hidden></em>
+      </div>
+          <button class="btn btn-primary btn-block" type="submit" id="resend-submit">Send a new link</button>
+        </form>
+      </div>
+      <p class="auth-foot"><a href="login.html">Back to sign in</a></p>
+    </section>
+  </main>
+</div>
+</body>
+</html>

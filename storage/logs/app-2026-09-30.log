@@ -1,0 +1,10 @@
+{"ts":"2026-09-30T01:10:42+00:00","level":"WARN","event":"security.session_fingerprint_mismatch","context":{"uid":2}}
+{"ts":"2026-09-30T01:10:53+00:00","level":"WARN","event":"security.session_fingerprint_mismatch","context":{"uid":1}}
+{"ts":"2026-09-30T01:43:04+00:00","level":"WARN","event":"security.session_fingerprint_mismatch","context":{"uid":2}}
+{"ts":"2026-09-30T01:52:23+00:00","level":"WARN","event":"security.session_fingerprint_mismatch","context":{"uid":2}}
+{"ts":"2026-09-30T01:56:06+00:00","level":"WARN","event":"security.session_fingerprint_mismatch","context":{"uid":2}}
+{"ts":"2026-09-30T02:59:30+00:00","level":"WARN","event":"security.session_fingerprint_mismatch","context":{"uid":1}}
+{"ts":"2026-09-30T03:00:48+00:00","level":"WARN","event":"security.session_fingerprint_mismatch","context":{"uid":1}}
+{"ts":"2026-09-30T04:22:33+00:00","level":"WARN","event":"security.ownership_denied","context":{"uid":3,"table":"categories","id":"cat_munkq0h37pveyg"}}
+{"ts":"2026-09-30T04:26:20+00:00","level":"WARN","event":"security.session_fingerprint_mismatch","context":{"uid":3}}
+{"ts":"2026-09-30T04:27:45+00:00","level":"WARN","event":"security.session_fingerprint_mismatch","context":{"uid":3}}

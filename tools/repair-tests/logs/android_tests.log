@@ -1,0 +1,147 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/8.11.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :app:generateDebugResValues UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:mergeDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:processDebugResources UP-TO-DATE
+> Task :app:compileDebugKotlin UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:compileDebugJavaWithJavac UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:l8DexDesugarLibDebug UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:dexBuilderDebug UP-TO-DATE
+> Task :app:mergeDebugGlobalSynthetics UP-TO-DATE
+> Task :app:processDebugJavaRes UP-TO-DATE
+> Task :app:mergeDebugJavaResource UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeLibDexDebug UP-TO-DATE
+> Task :app:mergeProjectDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:mergeDebugNativeLibs UP-TO-DATE
+> Task :app:stripDebugDebugSymbols UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:packageDebug UP-TO-DATE
+> Task :app:createDebugApkListingFileRedirect UP-TO-DATE
+> Task :app:assembleDebug UP-TO-DATE
+> Task :app:bundleDebugClassesToRuntimeJar UP-TO-DATE
+> Task :app:bundleDebugClassesToCompileJar UP-TO-DATE
+> Task :app:compileDebugUnitTestKotlin UP-TO-DATE
+> Task :app:preDebugUnitTestBuild UP-TO-DATE
+> Task :app:javaPreCompileDebugUnitTest UP-TO-DATE
+> Task :app:compileDebugUnitTestJavaWithJavac NO-SOURCE
+> Task :app:packageDebugUnitTestForUnitTest UP-TO-DATE
+> Task :app:generateDebugUnitTestConfig UP-TO-DATE
+> Task :app:processDebugUnitTestJavaRes UP-TO-DATE
+
+> Task :app:testDebugUnitTest
+
+ApiClientTest > concurrentCallsShareOneRefresh PASSED
+
+ApiClientTest > htmlErrorPageIsFriendly PASSED
+
+ApiClientTest > idsAreUrlEncoded PASSED
+
+ApiClientTest > revokedTokenSignsOut PASSED
+
+ApiClientTest > solvesHostChallengeAndRetries PASSED
+
+ApiClientTest > decodesErrorEnvelopeWithFields PASSED
+
+ApiClientTest > sendsMobileHeadersAndNoCsrf PASSED
+
+ApiClientTest > signedOutCallsSendNoCookie PASSED
+
+ApiClientTest > redirectsAreNotFollowed PASSED
+
+ApiClientTest > noTokenMeansSignedOutWithoutNetwork PASSED
+
+ApiClientTest > failedRefreshSignsOut PASSED
+
+ApiClientTest > refreshesExpiredTokenOnceAndRetries PASSED
+
+ApiClientTest > networkFailureIsOfflineError PASSED
+
+ApiClientTest > handles204 PASSED
+
+DatesTest > months PASSED
+
+HostChallengeTest > detectsAndSolves PASSED
+
+HostChallengeTest > ignoresOtherPages PASSED
+
+LiveApiTest > fullFeatureRoundTrip PASSED
+
+LiveApiTest > usersCannotTouchEachOther PASSED
+
+LiveApiTest > refreshAndLogoutAgainstRealServer PASSED
+
+LiveApiTest > authErrorsAreReadable PASSED
+
+MainActivityTest > launchesAndShowsAppName PASSED
+
+MoneyTest > rejectsBadAmounts PASSED
+
+MoneyTest > parsesMinorUnits PASSED
+
+MoneyTest > roundTripsInput PASSED
+
+ResponsiveScreenshotTest > screensFitEveryDevice[small_phone] PASSED
+
+ResponsiveScreenshotTest > screensFitEveryDevice[normal_phone] PASSED
+
+ResponsiveScreenshotTest > screensFitEveryDevice[large_phone] PASSED
+
+ResponsiveScreenshotTest > screensFitEveryDevice[tablet] PASSED
+
+ResponsiveScreenshotTest > screensFitEveryDevice[phone_landscape] PASSED
+
+ResponsiveScreenshotTest > screensFitEveryDevice[tablet_landscape] PASSED
+
+UiFlowTest > unverifiedLoginOffersResend PASSED
+
+UiFlowTest > addExpenseFromDashboardWithDuplicateGuard PASSED
+
+UiFlowTest > signInShowsDashboardAndTabsNavigateWithBack PASSED
+
+UiFlowTest > budgetLineSaveLoadPreviewClear PASSED
+
+UiFlowTest > billMarkPaidRecordsExpense PASSED
+
+UiFlowTest > unreachableServerShowsRetry PASSED
+
+UiFlowTest > offlineBarAndRevokedSessionReturnToLogin PASSED
+
+UiFlowTest > registerValidatesThenShowsCheckEmail PASSED
+
+UiFlowTest > liveGroceryListPriceSubmitSaveLoadClear PASSED
+
+UiFlowTest > editorAsksBeforeDiscardingChanges PASSED
+
+ValidateTest > passwordMatchesServerPolicy PASSED
+
+ValidateTest > email PASSED
+
+BUILD SUCCESSFUL in 1m 53s
+46 actionable tasks: 1 executed, 45 up-to-date

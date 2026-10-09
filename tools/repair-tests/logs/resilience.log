@@ -1,0 +1,11 @@
+  PASS website OK with missing includes/ApiTokens.php
+  PASS website OK with Phase 1 includes/api.php
+  PASS website OK with Phase 1 includes/Auth.php
+  PASS website OK with Phase 1 includes/AuthFlows.php
+  PASS website OK with Phase 1 includes/Repositories.php
+  PASS website OK with Phase 1 api/auth/session.php
+  PASS website OK with Phase 1 api/auth/password.php
+  PASS website OK with Phase 1 api/auth/register.php
+  PASS website OK with Phase 1 api/auth/login.php
+  PASS website OK with Phase 1 api/bootstrap.php
+PASS 10 FAIL 0

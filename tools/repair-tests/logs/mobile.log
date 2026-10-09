@@ -1,0 +1,135 @@
+
+[1m1. Registration and verification as the app (no cookies, no CSRF)[0m
+  [32mPASS[0m register via X-EBP-Client without CSRF -> 201/200
+  [32mPASS[0m verify-email via app -> 200
+  [32mPASS[0m verify status
+  [32mPASS[0m no Set-Cookie on API client responses
+  [32mPASS[0m browser-style register without CSRF still rejected
+
+[1m2. Token sign-in[0m
+  [32mPASS[0m unverified account cannot get tokens
+  [32mPASS[0m unverified code
+  [32mPASS[0m wrong password -> 401
+  [32mPASS[0m wrong password code
+  [32mPASS[0m token.php without X-EBP-Client rejected
+  [32mPASS[0m token login -> 200
+  [32mPASS[0m access token format
+  [32mPASS[0m refresh token format
+  [32mPASS[0m tokenType
+  [32mPASS[0m access ttl
+  [32mPASS[0m user email returned
+  [32mPASS[0m password hash never returned
+  [32mPASS[0m only a hash is stored (no raw validator in DB)
+
+[1m3. Bearer access[0m
+  [32mPASS[0m bootstrap with bearer -> 200
+  [32mPASS[0m bootstrap has settings
+  [32mPASS[0m bootstrap has categories
+  [32mPASS[0m bootstrap has accounts
+  [32mPASS[0m bootstrap has budgets
+  [32mPASS[0m bootstrap has bills
+  [32mPASS[0m bootstrap has recurring
+  [32mPASS[0m bootstrap has grocery
+  [32mPASS[0m bootstrap has groceryLists
+  [32mPASS[0m bootstrap has savedBudgets
+  [32mPASS[0m bootstrap has transactions
+  [32mPASS[0m bootstrap csrfToken empty for app
+  [32mPASS[0m session.php with bearer reports authenticated
+  [32mPASS[0m no token -> 401
+  [32mPASS[0m forged token -> 401
+  [32mPASS[0m tampered validator -> 401
+  [32mPASS[0m refresh token not usable as access token
+  [32mPASS[0m X-EBP-Token header fallback works
+  [32mPASS[0m create account
+  [32mPASS[0m account without name -> 422
+  [32mPASS[0m bearer write needs no CSRF and ignores Origin
+
+[1m4. Feature endpoints as the app[0m
+  [32mPASS[0m create expense 201
+  [32mPASS[0m duplicate -> 409
+  [32mPASS[0m duplicate code
+  [32mPASS[0m create income 201
+  [32mPASS[0m invalid amount/date -> 422
+  [32mPASS[0m field errors returned
+  [32mPASS[0m update tx
+  [32mPASS[0m list expenses
+  [32mPASS[0m list has meta.total
+  [32mPASS[0m dashboard report
+  [32mPASS[0m budget line
+  [32mPASS[0m budget income plan
+  [32mPASS[0m budget get
+  [32mPASS[0m saved budget create
+  [32mPASS[0m saved budget list contains it
+  [32mPASS[0m saved budget load
+  [32mPASS[0m clear working budget
+  [32mPASS[0m bill create
+  [32mPASS[0m bill pay
+  [32mPASS[0m bill unpay
+  [32mPASS[0m recurring create
+  [32mPASS[0m recurring pause
+  [32mPASS[0m grocery add
+  [32mPASS[0m check without price -> 422
+  [32mPASS[0m check with price
+  [32mPASS[0m saved grocery list create
+  [32mPASS[0m submit purchased items
+  [32mPASS[0m one expense created
+  [32mPASS[0m resubmit -> 409 grocery_changed
+  [32mPASS[0m load saved list
+  [32mPASS[0m loaded items unpurchased
+  [32mPASS[0m clear grocery
+
+[1m5. Cross-user isolation (IDOR)[0m
+  [32mPASS[0m user B login
+  [32mPASS[0m B cannot read A's saved budget -> 404
+  [32mPASS[0m B cannot update A's transaction -> 404
+  [32mPASS[0m B cannot delete A's transaction -> 404
+  [32mPASS[0m B cannot pay A's bill -> 404
+  [32mPASS[0m B cannot update A's bill -> 404
+  [32mPASS[0m B cannot pause A's recurring -> 404
+  [32mPASS[0m B cannot update A's saved budget -> 404
+  [32mPASS[0m B cannot load A's grocery list -> 404
+  [32mPASS[0m B cannot update A's grocery list -> 404
+  [32mPASS[0m B cannot A's bill payments -> 404
+  [32mPASS[0m B cannot use A's category/account id
+  [32mPASS[0m user_id in body ignored
+  [32mPASS[0m B never sees A's rows
+  [32mPASS[0m B delete of A's saved budget is a no-op
+  [32mPASS[0m A's transaction still intact
+
+[1m6. Expiry, refresh rotation and reuse detection[0m
+  [32mPASS[0m expired access -> 401 token_expired
+  [32mPASS[0m refresh -> 200
+  [32mPASS[0m refresh rotated
+  [32mPASS[0m new access works
+  [32mPASS[0m reusing old refresh -> 401
+  [32mPASS[0m reuse detection revoked the whole family
+  [32mPASS[0m rotated refresh also revoked
+  [32mPASS[0m garbage refresh -> 401
+  [32mPASS[0m expired refresh -> 401
+
+[1m7. Logout, password change, reset, deactivation[0m
+  [32mPASS[0m revoke -> 200
+  [32mPASS[0m revoked access -> 401
+  [32mPASS[0m revoked refresh -> 401
+  [32mPASS[0m other device unaffected by logout
+  [32mPASS[0m change password via app
+  [32mPASS[0m fresh tokens reissued
+  [32mPASS[0m other device signed out after password change
+  [32mPASS[0m old token of this device revoked
+  [32mPASS[0m reissued token works
+  [32mPASS[0m old password rejected
+  [32mPASS[0m new password works
+  [32mPASS[0m forgot-password via app
+  [32mPASS[0m reset email sent
+  [32mPASS[0m reset-check
+  [32mPASS[0m reset-password via app
+  [32mPASS[0m reset revokes app tokens
+  [32mPASS[0m login with reset password
+  [32mPASS[0m deactivated user's token rejected
+  [32mPASS[0m deactivated user cannot refresh
+
+[1m8. Web session unaffected[0m
+  [32mPASS[0m browser session still mints CSRF
+  [32mPASS[0m browser write without session -> 401/419
+
+117 passed, 0 failed

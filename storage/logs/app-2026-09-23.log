@@ -1,0 +1,2 @@
+{"ts":"2026-09-23T07:07:02+00:00","level":"WARN","event":"security.session_fingerprint_mismatch","context":{"uid":1}}
+{"ts":"2026-09-23T08:46:27+00:00","level":"WARN","event":"security.session_fingerprint_mismatch","context":{"uid":1}}

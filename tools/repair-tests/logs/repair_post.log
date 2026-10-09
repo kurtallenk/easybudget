@@ -1,0 +1,65 @@
+=== MODE post: health
+  PASS health JSON envelope
+  PASS health checks code modules
+  PASS health apiTokensTable=True
+  PASS health detects app client
+=== Existing website user logged in on Phase 1, then repaired code deployed
+  PASS existing session still authenticated on repaired code
+  PASS session cookie unchanged (no forced re-login)
+  PASS existing user bootstrap 200
+  PASS existing user write with CSRF
+  PASS website write without CSRF still rejected (419)
+  PASS cross-site style write w/o session rejected
+=== Website flows on repaired code
+  PASS web register 201
+  PASS web verify email
+  PASS web invalid credentials 401
+  PASS web login
+  PASS web session persists
+  PASS web change password
+  PASS web session kept after own password change
+  PASS web logout
+  PASS web signed out after logout
+  PASS web login again
+  PASS web forgot-password
+  PASS reset email sent
+  PASS web reset-check valid
+  PASS web reset-password (works post-migration)
+  PASS other web sessions signed out after reset (by design)
+  PASS web login with new password
+=== Android app flows
+  PASS app register 201 JSON (no CSRF)
+  PASS app forgot-password 200 JSON
+  PASS app resend-verification JSON
+  PASS app invalid credentials -> 401 JSON
+  PASS app login 200 with tokens
+  PASS app session authenticated
+  PASS app bootstrap 200
+  PASS app authed write
+  PASS app sees its data
+  PASS app invalid token -> 401 unauthenticated
+  PASS app no token -> 401
+  PASS expired access token -> 401 token_expired
+  PASS refresh rotates tokens
+  PASS new access token works
+  PASS fallback: no X-EBP-Client/Authorization, X-EBP-Token only
+  PASS fallback: UA + ebp_at cookie only
+  PASS browser with ebp_at cookie is NOT accepted
+  PASS fallback: UA-only app request skips CSRF
+  PASS app change password returns new tokens
+  PASS app still signed in after own password change
+  PASS app logout (revoke)
+  PASS token unusable after logout
+  PASS app login after logout
+  PASS reset (link from app request) completes
+  PASS app tokens revoked after password reset
+  PASS app login with reset password
+  PASS same user on website while app signed in
+=== Every API response is JSON (sample of error paths)
+  PASS JSON envelope: GET api/auth/token.php -> 405
+  PASS JSON envelope: POST api/auth/token.php -> 400
+  PASS JSON envelope: POST api/auth/register.php -> 422
+  PASS JSON envelope: GET api/accounts/list.php -> 401
+  PASS JSON envelope: POST api/transactions/create.php -> 401
+
+RESULT post: PASS 58 FAIL 0

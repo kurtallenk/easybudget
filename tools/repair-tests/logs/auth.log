@@ -1,0 +1,155 @@
+
+[1m1. Registration validation[0m
+  [32mPASS[0m invalid email is rejected (422)
+  [32mPASS[0m invalid email message is friendly
+  [32mPASS[0m weak password (too short) rejected
+  [32mPASS[0m weak password (one character class) rejected
+  [32mPASS[0m password mismatch rejected
+  [32mPASS[0m mismatch is reported on passwordConfirm
+  [32mPASS[0m no user created by failed attempts
+
+[1m2. Valid registration creates an unverified account and sends a link[0m
+  [32mPASS[0m register returns 201
+  [32mPASS[0m verification is required
+  [32mPASS[0m register does not sign the user in
+  [32mPASS[0m account stored as unverified
+  [32mPASS[0m password stored as a hash, not plain text
+  [32mPASS[0m one verification email sent
+  [32mPASS[0m email contains a verification link
+  [32mPASS[0m verification HTML has a button link
+  [32mPASS[0m email never contains the password
+  [32mPASS[0m email mentions expiry
+  [32mPASS[0m token selector stored
+  [32mPASS[0m only the validator hash is stored
+  [32mPASS[0m stored hash is sha256(validator)
+  [32mPASS[0m token expires in about 24 hours
+
+[1m3. Unverified login is blocked[0m
+  [32mPASS[0m unverified login returns 403
+  [32mPASS[0m error code is email_unverified
+  [32mPASS[0m still not signed in
+  [32mPASS[0m wrong password on unverified account is a generic 401
+
+[1m4. Duplicate email (no enumeration)[0m
+  [32mPASS[0m duplicate gets the same 201 response
+  [32mPASS[0m duplicate response shape matches
+  [32mPASS[0m no second account created
+  [32mPASS[0m duplicate with different case is the same account
+
+[1m5. Resend verification[0m
+  [32mPASS[0m resend inside the cooldown is rate limited (429)
+  [32mPASS[0m resend returns 200
+  [32mPASS[0m resend says another email was sent
+  [32mPASS[0m new email has a new token
+  [32mPASS[0m the previous token is invalidated
+  [32mPASS[0m resend for an unknown email answers the same
+  [32mPASS[0m unknown-email resend message identical
+  [32mPASS[0m no email sent to unknown address
+  [32mPASS[0m resend with invalid email is 422
+
+[1m6. Verification link[0m
+  [32mPASS[0m invalid token
+  [32mPASS[0m malformed token
+  [32mPASS[0m expired token is rejected
+  [32mPASS[0m expired token does not verify
+  [32mPASS[0m verify without CSRF token is rejected (419)
+  [32mPASS[0m valid token verifies
+  [32mPASS[0m user marked verified
+  [32mPASS[0m token marked used
+  [32mPASS[0m reused token cannot verify again (already_verified)
+  [32mPASS[0m verify does not sign anyone in
+  [32mPASS[0m resend for verified address still answers 200
+  [32mPASS[0m no verification email for a verified account
+  [32mPASS[0m duplicate signup of verified account emails the owner instead
+
+[1m7. Login[0m
+  [32mPASS[0m incorrect password is 401
+  [32mPASS[0m nonexistent email is 401
+  [32mPASS[0m same message for unknown email and wrong password
+  [32mPASS[0m login with invalid email format is 422
+  [32mPASS[0m verified login succeeds
+  [32mPASS[0m verified user reaches the app (bootstrap 200)
+  [32mPASS[0m bootstrap returns this user
+  [32mPASS[0m logout
+  [32mPASS[0m after logout the app is locked (401)
+
+[1m8. Protected endpoints cannot be bypassed[0m
+  [32mPASS[0m anonymous GET /bootstrap.php is 401
+  [32mPASS[0m anonymous GET /transactions/list.php is 401
+  [32mPASS[0m anonymous GET /budgets/list.php is 401
+  [32mPASS[0m anonymous GET /bills/list.php is 401
+  [32mPASS[0m anonymous GET /recurring/list.php is 401
+  [32mPASS[0m anonymous GET /grocery/list.php is 401
+  [32mPASS[0m anonymous GET /settings/get.php is 401
+  [32mPASS[0m anonymous GET /reports/dashboard.php is 401
+  [32mPASS[0m bob signs in once verified
+  [32mPASS[0m session of an unverified account is refused
+  [32mPASS[0m session probe reports signed out
+
+[1m9. Forgot password[0m
+  [32mPASS[0m invalid email format is 422
+  [32mPASS[0m missing email is 422
+  [32mPASS[0m unknown email answers 200
+  [32mPASS[0m no reset email to unknown address
+  [32mPASS[0m second device signed in before reset
+  [32mPASS[0m valid email answers 200
+  [32mPASS[0m known and unknown emails get the identical message
+  [32mPASS[0m one reset email sent
+  [32mPASS[0m reset email contains a reset link
+  [32mPASS[0m reset email has a prominent button
+  [32mPASS[0m reset email explains expiry
+  [32mPASS[0m reset email says to ignore if not requested
+  [32mPASS[0m reset email has no password or hash
+  [32mPASS[0m second request inside the cooldown is 429
+  [32mPASS[0m cooldown applies to unknown emails too (no enumeration)
+
+[1m10. Reset password page[0m
+  [32mPASS[0m reset-check: valid token
+  [32mPASS[0m reset-check: invalid token
+  [32mPASS[0m mismatched confirmation is 422
+  [32mPASS[0m weak new password is 422
+  [32mPASS[0m reusing the current password is refused
+  [32mPASS[0m token still usable after validation errors
+  [32mPASS[0m invalid token cannot reset
+  [32mPASS[0m valid reset succeeds
+  [32mPASS[0m the browser session used for the reset was ended
+  [32mPASS[0m new password stored hashed
+  [32mPASS[0m token marked used
+  [32mPASS[0m reused reset token is refused
+  [32mPASS[0m reset-check reports used
+  [32mPASS[0m other device was signed out by the reset
+  [32mPASS[0m password-changed notice emailed
+  [32mPASS[0m old password no longer works
+  [32mPASS[0m login with the new password works
+  [32mPASS[0m app reachable after reset login
+
+[1m11. Expired reset token[0m
+  [32mPASS[0m reset-check: expired
+  [32mPASS[0m expired reset token is refused
+  [32mPASS[0m password unchanged by expired token
+  [32mPASS[0m new password still the valid one
+  [32mPASS[0m requesting again invalidates the older reset link
+  [32mPASS[0m newest reset link is valid
+
+[1m12. Rate limits[0m
+  [32mPASS[0m per-address hourly cap (3 then 429)
+
+[1m13. CSRF, origin and session hardening on the new endpoints[0m
+  [32mPASS[0m /auth/forgot-password.php without CSRF is 419
+  [32mPASS[0m /auth/reset-password.php without CSRF is 419
+  [32mPASS[0m /auth/resend-verification.php without CSRF is 419
+  [32mPASS[0m /auth/reset-check.php without CSRF is 419
+  [32mPASS[0m /auth/register.php without CSRF is 419
+  [32mPASS[0m cross-origin forgot-password is 403
+  [32mPASS[0m change password works
+  [32mPASS[0m changing password keeps the current session
+  [32mPASS[0m changing password signs out other sessions
+  [32mPASS[0m session id rotates on login (fixation)
+
+[1m14. Header injection via display name[0m
+  [32mPASS[0m email sent
+  [32mPASS[0m no injected Bcc header
+  [32mPASS[0m only the real recipient is addressed
+
+[1mResult[0m
+  124 passed, 0 failed
